@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Canary Rats</string>
+    <string name="nombre">Introduzca su nombre:</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="prompt_email">Correo</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="action_sign_in">Acceder o registrarse</string>
+    <string name="action_sign_in_short">Acceder</string>
+    <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="parrafoInicial">Consúltenos su idea de impresión por agua, rotulación, diseños 3D y otros</string>
+    <string name="imagen_del_logo" />
+    <string name="emailHint">El correo no es válido</string>
+</resources>
