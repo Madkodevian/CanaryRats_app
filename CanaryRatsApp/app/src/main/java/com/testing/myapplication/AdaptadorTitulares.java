@@ -32,27 +32,27 @@ public class AdaptadorTitulares extends ArrayAdapter<Titular> {
         View view = convertView;
 
         if(view == null){
-            view = LayoutInflater.from(contexto).inflate(R.layout.item_list,null);
+            view = LayoutInflater.from(contexto).inflate(R.layout.activity_shop,null);
+            //view = LayoutInflater.from(contexto).inflate(R.layout.item_list,null);
         }
 
         Titular titular = listaTitular.get(position);
 
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        View item = inflater.inflate(R.layout.item_list, null);
 
-        ImageView imagen = view.findViewById(R.id.imgProduct);
+        ImageView imagen = item.findViewById(R.id.imgProduct);
+        //imagen.setImageResource(listaTitular.getImg());
         //add on Titular
         imagen.setImageResource(titular.getImg());
 
-        LayoutInflater inflater = LayoutInflater.from(getContext());
-        View item = inflater.inflate(R.layout.activity_shop, null);
-
-        ImageView imagen = item.findViewById(R.id.imgProduct);
-        imagen.setImageResource(listaTitular.getImg());
-
         TextView lblTitulo = item.findViewById(R.id.lblTitulo);
-        lblTitulo.setText(listaTitular[position].getTitulo());
+        //lblTitulo.setText(listaTitular[position].getTitulo());
+        lblTitulo.setText(titular.getTitulo());
 
         TextView lblSubtitulo = item.findViewById(R.id.lblSubTitulo);
-        lblSubtitulo.setText(listaTitular[position].getSubtitulo());
+        //lblSubtitulo.setText(listaTitular[position].getSubtitulo());
+        lblTitulo.setText(titular.getSubtitulo());
 
         return(item);
     }
