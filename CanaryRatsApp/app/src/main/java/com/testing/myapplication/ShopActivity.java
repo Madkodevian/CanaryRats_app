@@ -7,13 +7,25 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ShopActivity extends AppCompatActivity {
+    private ListView listView;
     private ListView lstOpciones;
     private ListView lblTitulo;
     private ListView lblSubTitulo;
     private Spinner cmbOpciones;
+    private List<Titular> listaTitular = new ArrayList<>();
+    AdaptadorTitulares adaptadorTitular;
 
-    final String[] datos = new String[]{"Elem1","Elem2","Elem3","Elem4","Elem5"};
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_shop);
+
+        listView = findViewById(R.id.listItemShop);
+    }
 
     ArrayAdapter<String> adaptador =
             new ArrayAdapter<String>(this,
@@ -25,17 +37,17 @@ public class ShopActivity extends AppCompatActivity {
                     android.R.layout.simple_spinner_item);
 
 
-    cmbOpciones = findViewById(R.id.CmbOpciones);
-
-    adaptador.setDropDownViewResource(
-        android.R.layout.simple_spinner_dropdown_item);
-
-    cmbOpciones.setAdapter(adaptador);
-
+    //cmbOpciones = findViewById(R.id.CmbOpciones);
+    //adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    //cmbOpciones.setAdapter(adaptador);
 
     //AdaptadorTitulares adaptador1 = new AdaptadorTitulares(this, datos);
     //lstOpciones = findViewById(R.id.lstOpciones);
     //lstOpciones.setAdapter(adaptador1);
+
+    listaTitular.add(new Titular("Titulo 1", "Subtítulo largo 1", R.mipmap.ic_launcher));
+    adaptadorTitular = new ListAdapter(ShopActivity.this, R.layout.activity_shop, listaTitular);
+    lblTitulo.setAdapter(adaptadorTitular);
 
     private Titular[] datos =
             new Titular[]{
@@ -54,10 +66,4 @@ public class ShopActivity extends AppCompatActivity {
                     new Titular("Título 13", "Subtítulo largo 13"),
                     new Titular("Título 14", "Subtítulo largo 14"),
                     new Titular("Título 15", "Subtítulo largo 15")};
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shop);
-    }
 }

@@ -5,28 +5,54 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import java.util.List;
 
 public class AdaptadorTitulares extends ArrayAdapter<Titular> {
-    private ListView lstOpciones;
-    private ListView lblTitulo;
-    private ListView lblSubTitulo;
-    //final String[] datos = new String[]{};
+    private List<Titular> listaTitular;
+    private int resourceLayout;
+    private Context contexto;
 
-    public AdaptadorTitulares(Context context, Titular[] datos) {
-        super(context, R.layout.listitem_titular, datos);
+
+    public AdaptadorTitulares(@NonNull Context context, int resource, List <Titular> objects) {
+        super(context, R.layout.activity_shop, resource, objects);
+        this.listaTitular = objects;
+        this.contexto = context;
+        this.resourceLayout = resource;
+
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
+    //ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, datos);
+
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        View view = convertView;
+
+        if(view == null){
+            view = LayoutInflater.from(contexto).inflate(R.layout.item_list,null);
+        }
+
+        Titular titular = listaTitular.get(position);
+
+
+        ImageView imagen = view.findViewById(R.id.imgProduct);
+        //add on Titular
+        imagen.setImageResource(titular.getImg());
+
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        View item = inflater.inflate(R.layout.listitem_titular, null);
+        View item = inflater.inflate(R.layout.activity_shop, null);
+
+        ImageView imagen = item.findViewById(R.id.imgProduct);
+        imagen.setImageResource(listaTitular.getImg());
 
         TextView lblTitulo = item.findViewById(R.id.lblTitulo);
-        lblTitulo.setText(datos[position].getTitulo());
+        lblTitulo.setText(listaTitular[position].getTitulo());
 
         TextView lblSubtitulo = item.findViewById(R.id.lblSubTitulo);
-        lblSubtitulo.setText(datos[position].getSubtitulo());
+        lblSubtitulo.setText(listaTitular[position].getSubtitulo());
 
         return(item);
     }
