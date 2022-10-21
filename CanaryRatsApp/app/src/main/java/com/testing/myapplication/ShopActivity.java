@@ -21,6 +21,9 @@ public class ShopActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
 
+        //Recuperamos la información pasada en el intent
+        Bundle bundle = this.getIntent().getExtras();
+
         //Vista de la lista en ShopActivity
         listView = findViewById(R.id.listItemShop);
 
