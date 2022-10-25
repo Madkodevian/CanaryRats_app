@@ -40,8 +40,13 @@ public class LoginActivity extends AppCompatActivity {
 
         buttonWithoutLogin = findViewById(R.id.buttonWithoutLogin);
 
-        TextInputLayout txtInputLayout = (TextInputLayout) findViewById(R.id.textInputLayout);
-        txtInputLayout.setErrorEnabled(true);
+        //Error email
+        TextInputLayout txtErrorEmail = (TextInputLayout) findViewById(R.id.txtErrorEmail);
+        txtErrorEmail.setErrorEnabled(true);
+
+        //Error password
+        TextInputLayout txtErrorPassword = (TextInputLayout) findViewById(R.id.txtErrorPassword);
+        txtErrorPassword.setErrorEnabled(true);
 
         //Implementamos el evento click del botón
         loginOrSignIn.setOnClickListener(new View.OnClickListener() {
@@ -57,21 +62,25 @@ public class LoginActivity extends AppCompatActivity {
                 Bundle b = new Bundle();
 
                 //SET ERROR EMAIL
-                String correo = userEmail.getText().toString();
+                String email = userEmail.getText().toString();
+                String passwordLogin = userPassword.getText().toString();
 
-                if(correo.isEmpty() || !isValidEmail(correo)) {
-                    txtInputLayout.setError("Error: el correo no es válido");
-                }else if((correo.isEmpty())!=true && (!userPassword.getText().toString().trim().equals(""))) {
-                    txtInputLayout.setError(null);
-                    b.putString("EMAIL", correo);
+                if(email.isEmpty() || !isValidEmail(email)) {
+                    txtErrorEmail.setError("Error: el correo no es válido");
+                }else if(passwordLogin.isEmpty()){
+                    txtErrorPassword.setError("Error: La contraseña no es válida");
+                }else if(!(email.isEmpty()) && (!userPassword.getText().toString().trim().equals(""))) {
+                    txtErrorEmail.setError(null);
+                    b.putString("EMAIL", email);
 
-                    /**
-                     if(isValidEmail(userEmail.getText().toString())){
-                     b.putString("EMAIL", userEmail.getText().toString());
-                     }else{
-                     System.out.println("El correo no es válido");
-                     }
-                     */
+
+                    //Hacer casos:
+                    //1.Si el correo está vacío o no es valido
+                    //2.Si la contraseña está vacía o no es válida
+                    //3.Si el correo está vacío y la contraseña está vacía
+                    //4.Si el correo no es válido y la contraseña no es válida
+                    //5.Si el correo está vacío y la contraseña es válida
+                    //...
 
                     /** COMPROBAR SI EL EMAIL DADO ANTERIORMENTE, ES EL CORRECTO PARA INICIAR SESION
                      private boolean validarEmail(String email) {
