@@ -13,9 +13,9 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 public class AdaptadorTitulares extends ArrayAdapter<Titular> {
-    private List<Titular> listaTitular;
-    private int resourceLayout;
-    private Context contexto;
+    private final List<Titular> listaTitular;
+    private final int resourceLayout;
+    private final Context contexto;
 
 
     public AdaptadorTitulares(@NonNull Context context, int resource, List <Titular> objects) {

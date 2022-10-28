@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ShopActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private ListView listView;
-    private List<Titular> listaTitular = new ArrayList<>();
+    private final List<Titular> listaTitular = new ArrayList<>();
     AdaptadorTitulares adaptadorTitular;
 
     @Override
