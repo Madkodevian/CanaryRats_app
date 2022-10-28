@@ -68,13 +68,15 @@ public class LoginActivity extends AppCompatActivity {
                 String email = userEmail.getText().toString();
                 //password
                 String passwordLogin = userPassword.getText().toString().trim();
-                //passwordLogin.trim().equals("")
 
                 //Set error email and password
                 if(email.isEmpty() || !isValidEmail(email)) {
                     txtErrorEmail.setError("Error: el correo no es válido");
                 }else if((passwordLogin.isEmpty()) || !isValidPassword(passwordLogin)) {
                     txtErrorPassword.setError("Error: La contraseña no es válida");
+                    //txtErrorPassword.setError("Error: Intenta añadir una minúscula, una mayúscula, " +
+                    //        "un dígito y un caracter especial. De 8 a 20 caracteres.");
+                    //Esto sería para hacer el registro
                 }else{
                     txtErrorEmail.setError(null);
                     txtErrorPassword.setError(null);
