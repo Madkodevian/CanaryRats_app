@@ -73,9 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                 //Set error email and password
                 if(email.isEmpty() || !isValidEmail(email)) {
                     txtErrorEmail.setError("Error: el correo no es válido");
-                }else if((passwordLogin.isEmpty())) {
-                    txtErrorPassword.setError("Error: La contraseña no es válida");
-                }else if(!((passwordLogin.length()>=8) && (passwordLogin.length()<=12))){
+                }else if((passwordLogin.isEmpty()) || !isValidPassword(passwordLogin)) {
                     txtErrorPassword.setError("Error: La contraseña no es válida");
                 }else{
                     txtErrorEmail.setError(null);
@@ -118,12 +116,12 @@ public class LoginActivity extends AppCompatActivity {
             public Boolean isValidPassword(String password) {
                 Pattern pattern;
                 Matcher matcher;
-                final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$";
+                final String PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,20}$";
+                //minimo 8, maximo 20
                 pattern = Pattern.compile(PASSWORD_PATTERN);
                 matcher = pattern.matcher(password);
 
                 return matcher.matches();
-
 
                 //^                 # start-of-string
                 //(?=.*[0-9])       # a digit must occur at least once
@@ -132,9 +130,9 @@ public class LoginActivity extends AppCompatActivity {
                 //(?=.*[@#$%^&+=])  # a special character must occur at least once you can replace with your special characters
                 //(?=\\S+$)          # no whitespace allowed in the entire string
                 //.{4,}             # anything, at least six places though
+                //.{de este minimo, a este maximo}
                 //$                 # end-of-string
             }
-
             //The regex represents the need for user to enter at least 1 Uppercase, 1 Number and 1 Symbol
 
             /**
