@@ -4,12 +4,21 @@
     <string name="aceptar">Aceptar</string>
     <string name="prompt_email">Correo</string>
     <string name="prompt_password">Contraseña</string>
-    <string name="action_sign_in">Acceder o registrarse</string>
+    <string name="action_sign_in">Acceder</string>
     <string name="action_sign_in_short">Acceder</string>
     <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="nameSignIn">Nombre</string>
+    <string name="firstSurnameSignIn">Primer apellido</string>
+    <string name="secondSurnameSignIn">Segundo apellido</string>
+    <string name="addressSignIn">Dirección</string>
+    <string name="emailSignIn">Correo electrónico</string>
+    <string name="passwordSignIn">Contraseña</string>
+    <string name="passwordRepeatSignIn">Repita la contraseña</string>
+    <string name="registrar">Registrarse</string>
     <string name="parrafoInicial">Consúltenos su idea de impresión por agua, rotulación, diseños 3D y otros</string>
     <string name="imagen_del_logo" />
     <string name="emailHint">Introduzca su correo</string>
     <string name="passwordHint">Introduzca su contraseña</string>
     <string name="acceder_sin_registrarse">Acceder sin registrarse</string>
+    <string name="buttonSignIn">Registrarse</string>
 </resources>

@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -172,6 +173,22 @@ public class LoginActivity extends AppCompatActivity {
                 //Creamos el Intent
                 Intent intent =
                         new Intent(LoginActivity.this, ShopActivity.class);
+                //Iniciamos la nueva actividad
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void registrarUsuario(View view) {
+
+        TextView registrar = this.findViewById(R.id.registrar);
+
+        registrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Creamos el Intent
+                Intent intent =
+                        new Intent(LoginActivity.this, SignInActivity.class);
                 //Iniciamos la nueva actividad
                 startActivity(intent);
             }
