@@ -8,12 +8,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    //Canary Rats App colors
-    //Background
+
+    <!-- Canary Rats App colors -->
+    <!-- Background  -->
     <color name="pastelBlueBackground">#EBF8FF</color>
     <color name="pastelBlueButtonBackground">#C1E9FF</color>
 
-    //Text
+    <!-- Text -->
     <color name="blueGrayStrongText">#3C3C3C</color>
     <color name="blueGrayButtonText">#4B6270</color>
 </resources>

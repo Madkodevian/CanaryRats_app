@@ -15,44 +15,46 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LoginActivity extends AppCompatActivity {
+public class SignInNextActivity extends AppCompatActivity {
 
-    private EditText userEmail;
-    private EditText userPassword;
-    private Button loginOrSignIn;
-    private Button buttonWithoutLogin;
+    private TextView userEmail;
+    private TextView addPassword;
+    private TextView repeatPassword;
+    private Button buttonSignIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_sign_in_next);
 
-        //Obtenemos una referencia a los controles de la interfaz
+        //Localizar los controles
         userEmail = findViewById(R.id.userEmail);
+        addPassword = findViewById(R.id.addPassword);
+        repeatPassword = findViewById(R.id.repeatPassword);
+        buttonSignIn = findViewById(R.id.buttonSignIn);
 
-        userPassword = findViewById(R.id.userPassword);
-
-        loginOrSignIn = findViewById(R.id.loginOrSignIn);
-
-        buttonWithoutLogin = findViewById(R.id.buttonWithoutLogin);
+        //Errores String (quitando email y password) = String vacia
 
         //Error email
         TextInputLayout txtErrorEmail = findViewById(R.id.txtErrorEmail);
         txtErrorEmail.setErrorEnabled(true);
 
-        //Error password
-        TextInputLayout txtErrorPassword = findViewById(R.id.txtErrorPassword);
-        txtErrorPassword.setErrorEnabled(true);
+        //Error add password
+        TextInputLayout txtErrorAddPassword = findViewById(R.id.txtErrorAddPassword);
+        txtErrorAddPassword.setErrorEnabled(true);
 
-        //Implementamos el evento click del botón
-        loginOrSignIn.setOnClickListener(new View.OnClickListener() {
+        //Error repeat password
+        TextInputLayout txtErrorRepeatPassword = findViewById(R.id.txtErrorRepeatPassword);
+        txtErrorRepeatPassword.setErrorEnabled(true);
+
+        buttonSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
 
             //public void manejador (View boton)
             public void onClick(View v) {
                 //Creamos el Intent
                 Intent intent =
-                        new Intent(LoginActivity.this, LoginInActivity.class);
+                        new Intent(SignInNextActivity.this, LoginActivity.class);
 
 
                 //Creamos la información a pasar entre actividades
@@ -66,41 +68,36 @@ public class LoginActivity extends AppCompatActivity {
 
                 //Recogemos el texto recogido en una variable
                 //email
-                String email = userEmail.getText().toString();
+                String email = userEmail.getText().toString().trim();
                 //password
-                String passwordLogin = userPassword.getText().toString().trim();
+                String passwordLogin = addPassword.getText().toString().trim();
+                //repeat password
+                String passwordRepeatLogin = repeatPassword.getText().toString().trim();
 
                 //Set error email and password
-                if(email.isEmpty() || !isValidEmail(email)) {
+                if((!isValidEmail(email)) || email.isEmpty()) {
                     txtErrorEmail.setError("Error: el correo no es válido");
-                }else if((passwordLogin.isEmpty()) || !isValidPassword(passwordLogin)) {
-                    txtErrorPassword.setError("Error: La contraseña no es válida");
+                }else if((!isValidPassword(passwordLogin)) || passwordLogin.isEmpty()) {
+                    txtErrorAddPassword.setError("Error: La contraseña no es válida");
                     //txtErrorPassword.setError("Error: Intenta añadir una minúscula, una mayúscula, " +
                     //        "un dígito y un caracter especial. De 8 a 20 caracteres.");
                     //Esto sería para hacer el registro
+                }else if((email.isEmpty()) && (passwordLogin.isEmpty())) {
+                    txtErrorAddPassword.setError("Error: la contraseña no es válida");
+                    txtErrorEmail.setError("Error: el correo no es válido");
+                }else if(passwordRepeatLogin != passwordLogin){
+                    txtErrorRepeatPassword.setError("Error: la contraseña no es válida");
+                }else if(passwordRepeatLogin.isEmpty()){
+                    txtErrorRepeatPassword.setError("Error: la contraseña no es válida");
                 }else{
                     txtErrorEmail.setError(null);
-                    txtErrorPassword.setError(null);
+                    txtErrorAddPassword.setError(null);
                     bundleEmail.putString("EMAIL", email);
                     bundlePassword.putString("PASSWORD", passwordLogin);
 
-                    //Hacer casos:
-                    //1.Si el correo está vacío o no es valido
-                    //2.Si la contraseña está vacía o no es válida
-
-                    /** COMPROBAR SI EL EMAIL DADO ANTERIORMENTE, ES EL CORRECTO PARA INICIAR SESION
-                     private boolean validarEmail(String email) {
-                     Pattern pattern = Patterns.EMAIL_ADDRESS;
-                     return pattern.matcher(email).matches();
-                     }
-
-                     if (!comprobarEmail(userEmail.getText().toString())){
-                     userEmail.setError("Email no válido");
-                     }
-                     */
-
                     //clave-dato
                     //Añadimos la información al intent
+
                     intent.putExtras(bundleEmail);
 
                     //Iniciamos la nueva actividad
@@ -108,12 +105,10 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
 
-
             //Comprueba si el email es valido para ser una direccion de correo
             public boolean isValidEmail(CharSequence target) {
                 return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
             }
-
 
             //Comprueba si el password es valido con las limitaciones que se tengan
             public Boolean isValidPassword(String password) {
@@ -137,46 +132,6 @@ public class LoginActivity extends AppCompatActivity {
                 //$                 # end-of-string
             }
             //The regex represents the need for user to enter at least 1 Uppercase, 1 Number and 1 Symbol
-
-            /**
-            public boolean isValidPassword(String s) {
-                Pattern PASSWORD_PATTERN
-                        = Pattern.compile(
-                        "[a-zA-Z0-9\\!\\@\\#\\$]{8,24}");
-
-                return !TextUtils.isEmpty(s) && PASSWORD_PATTERN.matcher(s).matches();
-            }
-             */
-        });
-
-        //Implementamos el evento click del botón
-        buttonWithoutLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-
-            //public void manejador (View boton)
-            public void onClick(View v) {
-                //Creamos el Intent
-                Intent intent =
-                        new Intent(LoginActivity.this, ShopActivity.class);
-                //Iniciamos la nueva actividad
-                startActivity(intent);
-            }
-        });
-    }
-
-    public void registrarUsuario(View view) {
-
-        TextView registrar = this.findViewById(R.id.registrar);
-
-        registrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Creamos el Intent
-                Intent intent =
-                        new Intent(LoginActivity.this, SignInActivity.class);
-                //Iniciamos la nueva actividad
-                startActivity(intent);
-            }
         });
     }
 }
