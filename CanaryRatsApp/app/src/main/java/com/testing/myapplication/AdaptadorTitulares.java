@@ -1,59 +1,75 @@
 package com.testing.myapplication;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class AdaptadorTitulares extends ArrayAdapter<Titular> {
-    private final List<Titular> listaTitular;
-    private final int resourceLayout;
-    private final Context contexto;
+public class AdaptadorTitulares extends RecyclerView.Adapter<AdaptadorTitulares.TitularesViewHolder> implements View.OnClickListener{
+    private ArrayList<Titular> datos;
+    private View.OnClickListener listener;
 
-
-    public AdaptadorTitulares(@NonNull Context context, int resource, List <Titular> objects) {
-        super(context, R.layout.activity_shop, resource, objects);
-        this.listaTitular = objects;
-        this.contexto = context;
-        this.resourceLayout = resource;
-
+    public AdaptadorTitulares(ArrayList<Titular> datos) {
+        this.datos = datos;
     }
 
-    //ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, datos);
+    @Override
+    public TitularesViewHolder onCreateViewHolder(
+            ViewGroup viewGroup, int viewType) {
 
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View view = convertView;
+        View itemView = LayoutInflater.from(viewGroup.getContext())
+                .inflate(R.layout.item_list, viewGroup, false);
 
-        if(view == null){
-            view = LayoutInflater.from(contexto).inflate(R.layout.activity_shop,null);
-            //view = LayoutInflater.from(contexto).inflate(R.layout.item_list,null);
+        itemView.setOnClickListener(this);
+
+        TitularesViewHolder tvh = new TitularesViewHolder(itemView);
+        return tvh;
+    }
+
+    public void setOnClickListener(View.OnClickListener listener) {
+        this.listener = listener;
+    }
+
+    @Override
+    public void onBindViewHolder(TitularesViewHolder viewHolder, int pos) {
+        Titular item = datos.get(pos);
+        viewHolder.bindTitular(item);
+    }
+
+    @Override
+    public int getItemCount() {
+        return datos.size();
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(listener != null)
+            listener.onClick(view);
+    }
+
+    public static class TitularesViewHolder extends RecyclerView.ViewHolder {
+        private TextView txtTitulo;
+        private TextView txtSubtitulo;
+
+        public TitularesViewHolder(View itemView) {
+            super(itemView);
+
+            txtTitulo = itemView.findViewById(R.id.lblTitulo);
+            txtSubtitulo = itemView.findViewById(R.id.lblSubTitulo);
         }
 
-        Titular titular = listaTitular.get(position);
-
-        LayoutInflater inflater = LayoutInflater.from(getContext());
-        View item = inflater.inflate(R.layout.item_list, null);
-
-        ImageView imagen = item.findViewById(R.id.imgProduct);
-        //imagen.setImageResource(listaTitular.getImg());
-        //add on Titular
-        imagen.setImageResource(titular.getImg());
-
-        TextView lblTitulo = item.findViewById(R.id.lblTitulo);
-        //lblTitulo.setText(listaTitular[position].getTitulo());
-        lblTitulo.setText(titular.getTitulo());
-
-        TextView lblSubtitulo = item.findViewById(R.id.lblSubTitulo);
-        //lblSubtitulo.setText(listaTitular[position].getSubtitulo());
-        lblTitulo.setText(titular.getSubtitulo());
-
-        return(item);
+        public void bindTitular(Titular t) {
+            txtTitulo.setText(t.getTitulo());
+            txtSubtitulo.setText(t.getSubtitulo());
+        }
     }
 }

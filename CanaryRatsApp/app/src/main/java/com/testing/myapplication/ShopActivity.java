@@ -1,6 +1,8 @@
 package com.testing.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
@@ -12,32 +14,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShopActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
-    private ListView listView;
-    private final List<Titular> listaTitular = new ArrayList<>();
-    AdaptadorTitulares adaptadorTitular;
+
+    private RecyclerView recView;
+    private ArrayList<Titular> datos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
 
-        //Recuperamos la información pasada en el intent
-        Bundle bundle = this.getIntent().getExtras();
+        //inicialización de la lista de datos de ejemplo
+        datos = new ArrayList<Titular>();
+        for(int i=0; i<50; i++)
+            datos.add(new Titular("Título " + i, "Subtítulo item " + i));
 
-        //Vista de la lista en ShopActivity
-        listView = findViewById(R.id.listItemShop);
+        //Inicialización RecyclerView
+        recView = findViewById(R.id.RecViewListItem);
+        recView.setHasFixedSize(true);
 
-        //Aniadir nuevo titulo, subtitulo e imagen
-        listaTitular.add(new Titular("Título 1", "Diseño de camisa: 1", R.mipmap.ic_launcher));
-        listaTitular.add(new Titular("Título 2", "Diseño de camisa: 2", R.mipmap.ic_launcher));
-        listaTitular.add(new Titular("Título 3", "Diseño de camisa: 3", R.mipmap.ic_launcher));
-        listaTitular.add(new Titular("Título 4", "Diseño de camisa: 4", R.mipmap.ic_launcher));
+        final AdaptadorTitulares adaptador = new AdaptadorTitulares(datos);
 
-        //Nuevo adaptador de titulares
-        adaptadorTitular = new AdaptadorTitulares(ShopActivity.this, R.layout.activity_shop, listaTitular);
+        recView.setAdapter(adaptador);
 
-        //Aniadir a la lista
-        listView.setAdapter(adaptadorTitular);
+        recView.setAdapter(adaptador);
+
+        recView.setLayoutManager(
+                new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
     }
 
     @Override

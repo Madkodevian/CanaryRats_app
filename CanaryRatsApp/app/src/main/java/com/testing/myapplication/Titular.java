@@ -1,13 +1,11 @@
 package com.testing.myapplication;
 
-import android.widget.ArrayAdapter;
-
 public class Titular {
     private String titulo;
     private String subtitulo;
     private int img;
 
-        public Titular(String titulo, String subtitulo, int img){
+        public Titular(String titulo, String subtitulo){
             super();
             this.titulo = titulo;
             this.subtitulo = subtitulo;
