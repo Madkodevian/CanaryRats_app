@@ -59,12 +59,7 @@ public class SignInNextActivity extends AppCompatActivity {
 
                 //Creamos la información a pasar entre actividades
                 //bundle para el password
-                Bundle bundlePassword = new Bundle();
-                //bundlePassword.putString("PASSWORD", userPassword.getText().toString());
-
-                //Creamos la información a pasar entre actividades
-                Bundle bundleEmail = new Bundle();
-                //bundleEmail.putString("EMAIL", userEmail.getText().toString());
+                Bundle bundleSignInNext = new Bundle();
 
                 //Recogemos el texto recogido en una variable
                 //email
@@ -80,25 +75,25 @@ public class SignInNextActivity extends AppCompatActivity {
                 }else if((!isValidPassword(passwordLogin)) || passwordLogin.isEmpty()) {
                     txtErrorAddPassword.setError("Error: La contraseña no es válida");
                     //txtErrorPassword.setError("Error: Intenta añadir una minúscula, una mayúscula, " +
-                    //        "un dígito y un caracter especial. De 8 a 20 caracteres.");
+                    //"un dígito y un caracter especial. De 8 a 20 caracteres.");
                     //Esto sería para hacer el registro
                 }else if((email.isEmpty()) && (passwordLogin.isEmpty())) {
                     txtErrorAddPassword.setError("Error: la contraseña no es válida");
                     txtErrorEmail.setError("Error: el correo no es válido");
-                }else if(passwordRepeatLogin != passwordLogin){
+                }else if(!(passwordLogin.equals(passwordRepeatLogin))){
                     txtErrorRepeatPassword.setError("Error: la contraseña no es válida");
                 }else if(passwordRepeatLogin.isEmpty()){
                     txtErrorRepeatPassword.setError("Error: la contraseña no es válida");
                 }else{
                     txtErrorEmail.setError(null);
                     txtErrorAddPassword.setError(null);
-                    bundleEmail.putString("EMAIL", email);
-                    bundlePassword.putString("PASSWORD", passwordLogin);
+                    txtErrorRepeatPassword.setError(null);
+                    bundleSignInNext.putString("EMAIL", email);
+                    bundleSignInNext.putString("PASSWORD", passwordLogin);
 
                     //clave-dato
                     //Añadimos la información al intent
-
-                    intent.putExtras(bundleEmail);
+                    intent.putExtras(bundleSignInNext);
 
                     //Iniciamos la nueva actividad
                     startActivity(intent);

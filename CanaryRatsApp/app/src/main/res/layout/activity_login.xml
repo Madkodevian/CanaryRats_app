@@ -18,9 +18,9 @@
         android:id="@+id/registrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="185dp"
-        android:layout_marginBottom="18dp"
-        android:minHeight="0dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginBottom="12dp"
+        android:minHeight="48dp"
         android:onClick="registrarUsuario"
         android:text="@string/registrar"
 
@@ -35,8 +35,8 @@
 
     <ImageView
         android:id="@+id/imagenLogo"
-        android:layout_width="151dp"
-        android:layout_height="170dp"
+        android:layout_width="139dp"
+        android:layout_height="141dp"
         android:layout_marginBottom="460dp"
         android:contentDescription="@string/imagen_del_logo"
         app:layout_constraintBottom_toBottomOf="parent"

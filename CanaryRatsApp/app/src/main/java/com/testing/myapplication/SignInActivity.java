@@ -68,31 +68,47 @@ public class SignInActivity extends AppCompatActivity {
 
 
                 //Creamos la información a pasar entre actividades
-                //bundle para el password
-                Bundle bundleName = new Bundle();
-                bundleName.putString("NAME", name.getText().toString());
+                //bundle para el name
+                Bundle bundleSignIn = new Bundle();
+                bundleSignIn.putString("NAME", name.getText().toString());
 
-                //Creamos la información a pasar entre actividades
-                Bundle bundlefirstSurname = new Bundle();
-                bundlefirstSurname.putString("FIRSTSURNAME", firstSurname.getText().toString());
+                //bundle para el first surname
+                bundleSignIn.putString("FIRSTSURNAME", firstSurname.getText().toString());
+
+                //bundle para el second surname
+                bundleSignIn.putString("SECONDSURNAME", secondSurname.getText().toString());
+
+                //bundle para el address
+                bundleSignIn.putString("ADDRESS", address.getText().toString());
 
                 //Recogemos el texto recogido en una variable
-                //email
-                String userName = name.getText().toString();
-                //password
+                //name
+                String userName = name.getText().toString().trim();
+
+                //first surname
                 String userFirstSurname = firstSurname.getText().toString().trim();
 
+                //second surname
+                String userSecondSurname = secondSurname.getText().toString().trim();
+
+                //address
+                String userAddress = address.getText().toString().trim();
+
                 //Set error email and password
-                if(userName.isEmpty()) {
+                if(userName.isEmpty() || userFirstSurname.isEmpty() || userAddress.isEmpty()) {
                     txtErrorName.setError("Error: el nombre no es válido");
+                    txtErrorFirstSurname.setError("Error: el primer apellido no es válido");
+                    txtErrorAddress.setError("Error: la dirección no es válida");
                 }else{
                     txtErrorName.setError(null);
-                    bundleName.putString("NAME", userName);
+                    txtErrorFirstSurname.setError(null);
+                    txtErrorAddress.setError(null);
+                    bundleSignIn.putString("NAME", userName);
 
                     //clave-dato
                     //Añadimos la información al intent
 
-                    intent.putExtras(bundleName);
+                    intent.putExtras(bundleSignIn);
 
                     //Iniciamos la nueva actividad
                     startActivity(intent);

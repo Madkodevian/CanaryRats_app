@@ -4,7 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,6 +45,12 @@ public class LoginActivity extends AppCompatActivity {
         TextInputLayout txtErrorPassword = findViewById(R.id.txtErrorPassword);
         txtErrorPassword.setErrorEnabled(true);
 
+        //Recuperamos la información de SignInNextActivity pasada en el intent
+        Bundle bundle = this.getIntent().getExtras();
+
+        //Construimos el mensaje a mostrar
+        //txtComprobar.setText("usuario: " + bundle.getString("EMAIL"));
+
         //Implementamos el evento click del botón
         loginOrSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,15 +61,11 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent =
                         new Intent(LoginActivity.this, LoginInActivity.class);
 
+                //info en consola
+                Log.e("AAAAAAAAAAAAAAAAAA", "estoy aqui");
 
-                //Creamos la información a pasar entre actividades
-                //bundle para el password
-                Bundle bundlePassword = new Bundle();
-                //bundlePassword.putString("PASSWORD", userPassword.getText().toString());
-
-                //Creamos la información a pasar entre actividades
-                Bundle bundleEmail = new Bundle();
-                //bundleEmail.putString("EMAIL", userEmail.getText().toString());
+                //Bundle login
+                Bundle bundleLogin = new Bundle();
 
                 //Recogemos el texto recogido en una variable
                 //email
@@ -70,83 +73,35 @@ public class LoginActivity extends AppCompatActivity {
                 //password
                 String passwordLogin = userPassword.getText().toString().trim();
 
+                //Bundle sign in
+                String emailUser = bundleLogin.getString("EMAIL");
+                String passwordUser = bundleLogin.getString("PASSWORD");
+
+                //Sign in
+                String name = bundle.getString("NAME");
+
+                //Sign in next
+                String emailSignIn = bundle.getString("EMAIL");
+                String passwordSignIn = bundle.getString("PASSWORD");
+
                 //Set error email and password
-                if(email.isEmpty() || !isValidEmail(email)) {
+                if(email.isEmpty() || !email.equals(emailSignIn)) {
                     txtErrorEmail.setError("Error: el correo no es válido");
-                }else if((passwordLogin.isEmpty()) || !isValidPassword(passwordLogin)) {
+                }else if(passwordLogin.isEmpty() || !passwordLogin.equals(passwordSignIn)) {
                     txtErrorPassword.setError("Error: La contraseña no es válida");
-                    //txtErrorPassword.setError("Error: Intenta añadir una minúscula, una mayúscula, " +
-                    //        "un dígito y un caracter especial. De 8 a 20 caracteres.");
-                    //Esto sería para hacer el registro
                 }else{
                     txtErrorEmail.setError(null);
                     txtErrorPassword.setError(null);
-                    bundleEmail.putString("EMAIL", email);
-                    bundlePassword.putString("PASSWORD", passwordLogin);
-
-                    //Hacer casos:
-                    //1.Si el correo está vacío o no es valido
-                    //2.Si la contraseña está vacía o no es válida
-
-                    /** COMPROBAR SI EL EMAIL DADO ANTERIORMENTE, ES EL CORRECTO PARA INICIAR SESION
-                     private boolean validarEmail(String email) {
-                     Pattern pattern = Patterns.EMAIL_ADDRESS;
-                     return pattern.matcher(email).matches();
-                     }
-
-                     if (!comprobarEmail(userEmail.getText().toString())){
-                     userEmail.setError("Email no válido");
-                     }
-                     */
+                    bundleLogin.putString("EMAIL", email);
 
                     //clave-dato
                     //Añadimos la información al intent
-                    intent.putExtras(bundleEmail);
+                    intent.putExtras(bundleLogin);
 
                     //Iniciamos la nueva actividad
                     startActivity(intent);
                 }
             }
-
-
-            //Comprueba si el email es valido para ser una direccion de correo
-            public boolean isValidEmail(CharSequence target) {
-                return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
-            }
-
-
-            //Comprueba si el password es valido con las limitaciones que se tengan
-            public Boolean isValidPassword(String password) {
-                Pattern pattern;
-                Matcher matcher;
-                final String PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,20}$";
-                //minimo 8, maximo 20
-                pattern = Pattern.compile(PASSWORD_PATTERN);
-                matcher = pattern.matcher(password);
-
-                return matcher.matches();
-
-                //^                 # start-of-string
-                //(?=.*[0-9])       # a digit must occur at least once
-                //(?=.*[a-z])       # a lower case letter must occur at least once
-                //(?=.*[A-Z])       # an upper case letter must occur at least once
-                //(?=.*[@#$%^&+=])  # a special character must occur at least once you can replace with your special characters
-                //(?=\\S+$)          # no whitespace allowed in the entire string
-                //.{4,}             # anything, at least six places though
-                //.{de este minimo, a este maximo}
-                //$                 # end-of-string
-            }
-            //The regex represents the need for user to enter at least 1 Uppercase, 1 Number and 1 Symbol
-
-            /**
-            public boolean isValidPassword(String s) {
-                Pattern PASSWORD_PATTERN
-                        = Pattern.compile(
-                        "[a-zA-Z0-9\\!\\@\\#\\$]{8,24}");
-
-                return !TextUtils.isEmpty(s) && PASSWORD_PATTERN.matcher(s).matches();
-            }
-             */
         });
 
         //Implementamos el evento click del botón
