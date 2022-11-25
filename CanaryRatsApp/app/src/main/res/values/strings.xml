@@ -21,7 +21,12 @@
     <string name="passwordHint">Introduzca su contraseña</string>
     <string name="acceder_sin_registrarse">Acceder sin registrarse</string>
 
-    <!-- Buttons -->
+    <!-- Buttons Sign in-->
     <string name="buttonSignIn">Registrarse</string>
     <string name="buttonNext">Siguiente</string>
+
+    <!-- Buttons Shop-->
+    <string name="buttonMove">Mover</string>
+    <string name="buttonUpdate">Editar</string>
+    <string name="buttonRemove">Eliminar</string>
 </resources>

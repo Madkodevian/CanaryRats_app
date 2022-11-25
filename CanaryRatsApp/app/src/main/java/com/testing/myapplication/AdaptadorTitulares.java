@@ -40,6 +40,12 @@ public class AdaptadorTitulares extends RecyclerView.Adapter<AdaptadorTitulares.
     }
 
     @Override
+    public void onClick(View view) {
+        if(listener != null)
+            listener.onClick(view);
+    }
+
+    @Override
     public void onBindViewHolder(TitularesViewHolder viewHolder, int pos) {
         Titular item = datos.get(pos);
         viewHolder.bindTitular(item);
@@ -50,19 +56,12 @@ public class AdaptadorTitulares extends RecyclerView.Adapter<AdaptadorTitulares.
         return datos.size();
     }
 
-    @Override
-    public void onClick(View view) {
-        if(listener != null)
-            listener.onClick(view);
-    }
-
     public static class TitularesViewHolder extends RecyclerView.ViewHolder {
         private TextView txtTitulo;
         private TextView txtSubtitulo;
 
         public TitularesViewHolder(View itemView) {
             super(itemView);
-
             txtTitulo = itemView.findViewById(R.id.lblTitulo);
             txtSubtitulo = itemView.findViewById(R.id.lblSubTitulo);
         }
