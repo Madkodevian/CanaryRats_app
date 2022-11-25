@@ -22,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText userPassword;
     private Button loginOrSignIn;
     private Button buttonWithoutLogin;
+    private Button registrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,8 @@ public class LoginActivity extends AppCompatActivity {
         loginOrSignIn = findViewById(R.id.loginOrSignIn);
 
         buttonWithoutLogin = findViewById(R.id.buttonWithoutLogin);
+
+        registrar = findViewById(R.id.registrar);
 
         //Error email
         TextInputLayout txtErrorEmail = findViewById(R.id.txtErrorEmail);
@@ -62,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                         new Intent(LoginActivity.this, LoginInActivity.class);
 
                 //info en consola
-                Log.e("AAAAAAAAAAAAAAAAAA", "estoy aqui");
+                Log.e("prueba", "estoy aqui");
 
                 //Bundle login
                 Bundle bundleLogin = new Bundle();
@@ -117,11 +120,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    public void registrarUsuario(View view) {
-
-        TextView registrar = this.findViewById(R.id.registrar);
 
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override

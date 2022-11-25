@@ -14,24 +14,24 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="141dp">
 
-    <TextView
+    <Button
         android:id="@+id/registrar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="245dp"
+        android:layout_height="48dp"
         android:layout_marginTop="220dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/pastelBlueButtonBackground"
         android:minHeight="48dp"
-        android:onClick="registrarUsuario"
-        android:text="@string/registrar"
 
+        android:text="@string/registrar"
         android:textColor="@color/blueGrayButtonText"
-        android:textSize="20sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.477"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.722" />
+        app:layout_constraintVertical_bias="0.917" />
 
     <ImageView
         android:id="@+id/imagenLogo"
@@ -76,7 +76,7 @@
         android:id="@+id/txtErrorPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:inputType="textPassword"
         android:singleLine="true"
         android:textColorHint="@color/blueGrayStrongText"
@@ -141,7 +141,6 @@
         android:id="@+id/buttonWithoutLogin"
         android:layout_width="245dp"
         android:layout_height="51dp"
-        android:layout_marginTop="45dp"
         android:backgroundTint="@color/pastelBlueButtonBackground"
         android:text="@string/acceder_sin_registrarse"
         android:textColor="@color/blueGrayButtonText"
@@ -149,7 +148,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.469"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginOrSignIn"
+        app:layout_constraintTop_toBottomOf="@+id/registrar"
         app:layout_constraintVertical_bias="1.0" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -163,17 +162,18 @@
         android:id="@+id/loginOrSignIn"
         android:layout_width="245dp"
         android:layout_height="48dp"
-        android:layout_marginTop="45dp"
         android:layout_gravity="start"
+        android:layout_marginTop="90dp"
         android:backgroundTint="@color/pastelBlueButtonBackground"
         android:enabled="true"
         android:text="@string/action_sign_in"
+        android:textSize="14sp"
         android:textColor="@color/blueGrayButtonText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.901" />
+        app:layout_constraintVertical_bias="0.738" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

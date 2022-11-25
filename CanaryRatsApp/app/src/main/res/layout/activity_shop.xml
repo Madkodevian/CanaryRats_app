@@ -8,15 +8,68 @@
     android:background="@color/pastelBlueBackground"
     tools:context=".ShopActivity">
 
+    <ImageButton
+        android:id="@+id/buttonGetInTouch4"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="289dp"
+        android:layout_marginTop="493dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/pastelBlueButtonBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.879" />
+
+    <ImageButton
+        android:id="@+id/buttonShop4"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="298dp"
+        android:layout_marginBottom="36dp"
+        android:backgroundTint="@color/pastelBlueButtonBackground"
+        android:src="@drawable/ic_action_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.883" />
+
+    <ImageButton
+        android:id="@+id/buttonProfile4"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="173dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/pastelBlueButtonBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.891"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.881" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecViewListItem"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="35dp"
-        android:layout_marginEnd="-330dp"
+        android:layout_marginEnd="-58dp"
         android:layout_toStartOf="@+id/buttonMove" />
 
     <Button
@@ -24,36 +77,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="268dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="230dp"
-        android:text="@string/buttonMove" />
+        android:layout_marginStart="274dp"
+        android:layout_marginTop="221dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="334dp"
+        android:backgroundTint="@color/pastelBlueButtonBackground"
+        android:text="@string/buttonMove"
+        android:textColor="@color/blueGrayButtonText" />
 
     <Button
         android:id="@+id/buttonRemove"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
+        android:layout_width="125dp"
+        android:layout_height="49dp"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="260dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="144dp"
-        android:text="@string/buttonRemove" />
+        android:layout_marginStart="274dp"
+        android:layout_marginTop="284dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="270dp"
+        android:backgroundTint="@color/pastelBlueButtonBackground"
+        android:text="@string/buttonRemove"
+        android:textColor="@color/blueGrayButtonText" />
 
     <Button
         android:id="@+id/buttonUpdate"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="268dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="60dp"
-        android:text="@string/buttonUpdate" />
+        android:layout_marginStart="272dp"
+        android:layout_marginTop="348dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="207dp"
+        android:backgroundTint="@color/pastelBlueButtonBackground"
+        android:text="@string/buttonUpdate"
+        android:textColor="@color/blueGrayButtonText" />
 
 
 </RelativeLayout>
