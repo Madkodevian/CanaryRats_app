@@ -1,23 +1,21 @@
 package com.testing.myapplication;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.media.Image;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class LoginInActivity extends AppCompatActivity {
 
     private TextView txtSaludoUsuario;
     private TextView textViewParrafo;
-    private static final int mnuOpc1Profile = 1;
-    private static final int mnuOpc2Shop = 2;
-    private static final int mnuOpc3GetInTouch = 3;
+    private DrawerLayout drawer;
+    //private static final int mnuOpc1Profile = 1;
+    //private static final int mnuOpc2Shop = 2;
+    //private static final int mnuOpc3GetInTouch = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +25,18 @@ public class LoginInActivity extends AppCompatActivity {
         //Localizar los controles
         txtSaludoUsuario = findViewById(R.id.txtSaludoUsuario);
         textViewParrafo = findViewById(R.id.textViewParrafo);
+
+        //Navigation menu
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        drawer = findViewById(R.id.drawer_layout);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
         //Recuperamos la información pasada en el intent
         Bundle bundle = this.getIntent().getExtras();
@@ -38,14 +48,11 @@ public class LoginInActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(Menu.NONE, mnuOpc1Profile, Menu.NONE, "Perfil")
-                .setIcon(android.R.drawable.ic_menu_preferences);
-        menu.add(Menu.NONE, mnuOpc2Shop, Menu.NONE, "Tienda")
-                .setIcon(android.R.drawable.ic_menu_compass);
-        menu.add(Menu.NONE, mnuOpc3GetInTouch, Menu.NONE, "Contacto")
-                .setIcon(android.R.drawable.ic_menu_agenda);
-        return true;
+    public void onBackPressed() {
+        if(drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        }else{
+            super.onBackPressed();
+        }
     }
-
 }
