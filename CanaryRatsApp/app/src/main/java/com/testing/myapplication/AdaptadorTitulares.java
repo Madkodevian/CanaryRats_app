@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdaptadorTitulares extends RecyclerView.Adapter<AdaptadorTitulares.TitularesViewHolder> implements View.OnClickListener{
-    private ArrayList<Titular> datos;
+    private final ArrayList<Titular> datos;
     private View.OnClickListener listener;
 
     public AdaptadorTitulares(ArrayList<Titular> datos) {
@@ -57,8 +57,8 @@ public class AdaptadorTitulares extends RecyclerView.Adapter<AdaptadorTitulares.
     }
 
     public static class TitularesViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtTitulo;
-        private TextView txtSubtitulo;
+        private final TextView txtTitulo;
+        private final TextView txtSubtitulo;
 
         public TitularesViewHolder(View itemView) {
             super(itemView);

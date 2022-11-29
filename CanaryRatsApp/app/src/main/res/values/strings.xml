@@ -27,6 +27,12 @@
 
     <!-- Buttons Shop-->
     <string name="buttonMove">Mover</string>
-    <string name="buttonUpdate">Editar</string>
+    <string name="buttonUpdate">Añadir</string>
     <string name="buttonRemove">Eliminar</string>
+
+    <!-- Navigation drawer menu-->
+    <string name="navigation_drawer_open">Abrir menú</string>
+    <string name="navigation_drawer_close">Cerrar menú</string>
+
+
 </resources>

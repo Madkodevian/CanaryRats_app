@@ -1,65 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pastelBlueBackground"
     tools:context=".ShopActivity">
-
-    <ImageButton
-        android:id="@+id/buttonGetInTouch4"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="289dp"
-        android:layout_marginTop="493dp"
-        android:layout_marginEnd="42dp"
-        android:layout_marginBottom="30dp"
-        android:backgroundTint="@color/pastelBlueButtonBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.437"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.879" />
-
-    <ImageButton
-        android:id="@+id/buttonShop4"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="298dp"
-        android:layout_marginBottom="36dp"
-        android:backgroundTint="@color/pastelBlueButtonBackground"
-        android:src="@drawable/ic_action_name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.883" />
-
-    <ImageButton
-        android:id="@+id/buttonProfile4"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="173dp"
-        android:layout_marginBottom="32dp"
-        android:backgroundTint="@color/pastelBlueButtonBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.891"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.881" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecViewListItem"
@@ -67,58 +13,50 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="-58dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="-340dp"
         android:layout_toStartOf="@+id/buttonMove" />
 
     <Button
-        android:id="@+id/buttonMove"
+        android:id="@+id/buttonUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="274dp"
-        android:layout_marginTop="221dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="334dp"
+        android:layout_marginStart="251dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="@color/pastelBlueButtonBackground"
+        android:text="@string/buttonUpdate"
+        android:textColor="@color/blueGrayButtonText" />
+
+    <Button
+        android:id="@+id/buttonMove"
+        android:layout_width="139dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="253dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="148dp"
         android:backgroundTint="@color/pastelBlueButtonBackground"
         android:text="@string/buttonMove"
         android:textColor="@color/blueGrayButtonText" />
 
     <Button
         android:id="@+id/buttonRemove"
-        android:layout_width="125dp"
-        android:layout_height="49dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="274dp"
-        android:layout_marginTop="284dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginBottom="270dp"
+        android:layout_marginStart="252dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="87dp"
         android:backgroundTint="@color/pastelBlueButtonBackground"
         android:text="@string/buttonRemove"
         android:textColor="@color/blueGrayButtonText" />
-
-    <Button
-        android:id="@+id/buttonUpdate"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="272dp"
-        android:layout_marginTop="348dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="207dp"
-        android:backgroundTint="@color/pastelBlueButtonBackground"
-        android:text="@string/buttonUpdate"
-        android:textColor="@color/blueGrayButtonText" />
-
-
 </RelativeLayout>

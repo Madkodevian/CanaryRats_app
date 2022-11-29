@@ -13,6 +13,7 @@
     <!-- Background  -->
     <color name="pastelBlueBackground">#EBF8FF</color>
     <color name="pastelBlueButtonBackground">#C1E9FF</color>
+    <color name="colorAccent">#95DAFF</color>
 
     <!-- Text -->
     <color name="blueGrayStrongText">#3C3C3C</color>
