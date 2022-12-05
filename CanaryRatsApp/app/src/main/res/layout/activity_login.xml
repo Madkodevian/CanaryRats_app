@@ -159,7 +159,7 @@
         app:layout_constraintGuide_begin="35dp" />
 
     <Button
-        android:id="@+id/loginOrSignIn"
+        android:id="@+id/login"
         android:layout_width="245dp"
         android:layout_height="48dp"
         android:layout_gravity="start"

@@ -15,7 +15,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText userEmail;
     private EditText userPassword;
-    private Button loginOrSignIn;
+    private Button login;
     private Button buttonWithoutLogin;
     private Button registrar;
 
@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
 
         userPassword = findViewById(R.id.userPassword);
 
-        loginOrSignIn = findViewById(R.id.loginOrSignIn);
+        login = findViewById(R.id.login);
 
         buttonWithoutLogin = findViewById(R.id.buttonWithoutLogin);
 
@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         //txtComprobar.setText("usuario: " + bundle.getString("EMAIL"));
 
         //Implementamos el evento click del botón
-        loginOrSignIn.setOnClickListener(new View.OnClickListener() {
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
 
             //public void manejador (View boton)
@@ -72,11 +72,11 @@ public class LoginActivity extends AppCompatActivity {
                 String passwordLogin = userPassword.getText().toString().trim();
 
                 //Bundle sign in
-                String emailUser = bundleLogin.getString("EMAIL");
-                String passwordUser = bundleLogin.getString("PASSWORD");
+               // String emailUser = bundleLogin.getString("EMAIL");
+                //String passwordUser = bundleLogin.getString("PASSWORD");
 
                 //Sign in
-                String name = bundle.getString("NAME");
+                //String name = bundle.getString("NAME");
 
                 //Sign in next
                 String emailSignIn = bundle.getString("EMAIL");

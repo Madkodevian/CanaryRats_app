@@ -133,6 +133,7 @@ public class ShopActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
+
     //Establece una separación de cero entre los elementos.
     RecyclerView.ItemDecoration decoration = new RecyclerView.ItemDecoration() {
         @Override
@@ -145,6 +146,7 @@ public class ShopActivity extends AppCompatActivity implements AdapterView.OnIte
             //recView.setAdapter(adaptador);
         }
     };
+
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
