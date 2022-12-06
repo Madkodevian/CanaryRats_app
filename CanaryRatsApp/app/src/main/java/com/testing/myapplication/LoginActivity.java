@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                         new Intent(LoginActivity.this, LoginInActivity.class);
 
                 //info en consola
-                Log.e("prueba", "estoy aqui");
+                Log.e("AAAAAAAAAAAAAAAAA", "estoy aqui");
 
                 //Bundle login
                 Bundle bundleLogin = new Bundle();

@@ -12,13 +12,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.material.navigation.NavigationView;
 
 public class LoginInActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, NavigationView.OnNavigationItemSelectedListener{
 
     private TextView txtSaludoUsuario;
-    private TextView textViewParrafo;
     private DrawerLayout drawer;
 
     @Override
@@ -28,16 +26,15 @@ public class LoginInActivity extends AppCompatActivity implements AdapterView.On
 
         //Localizar los controles
         txtSaludoUsuario = findViewById(R.id.txtSaludoUsuario);
-        textViewParrafo = findViewById(R.id.textViewParrafo);
 
         //Navigation menu
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.drawer_layout);
+
         NavigationView navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
-
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -60,8 +57,6 @@ public class LoginInActivity extends AppCompatActivity implements AdapterView.On
 
         //Construimos el mensaje a mostrar
         txtSaludoUsuario.setText("Ha iniciado sesión, usuario " + bundle.getString("EMAIL"));
-
-        textViewParrafo.setText("Éste es su perfil de Usuario. Para acceder a otras opciones, seleccione uno de los botones de abajo.");
     }
 
     @Override

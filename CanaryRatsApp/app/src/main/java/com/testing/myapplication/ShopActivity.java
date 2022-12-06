@@ -28,15 +28,11 @@ public class ShopActivity extends AppCompatActivity implements AdapterView.OnIte
     private Button buttonRemove;
     private Button buttonMove;
     private DrawerLayout drawer;
-    //private static final int mnuOpc1Profile = 1;
-    //private static final int mnuOpc2Shop = 2;
-    //private static final int mnuOpc3GetInTouch = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
-        //setContentView(R.menu.main_menu);
 
         //Buttons
         buttonUpdate = findViewById(R.id.buttonUpdate);
