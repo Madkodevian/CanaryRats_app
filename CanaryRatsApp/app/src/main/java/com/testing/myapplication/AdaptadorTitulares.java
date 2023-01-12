@@ -4,11 +4,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 
 
-public class AdaptadorTitulares extends RecyclerView.Adapter<AdaptadorTitulares.TitularesViewHolder> implements View.OnClickListener{
+public class AdaptadorTitulares extends RecyclerView.Adapter<AdaptadorTitulares.TitularesViewHolder> implements View.OnClickListener {
     private final ArrayList<Titular> datos;
     private View.OnClickListener listener;
 
@@ -35,7 +37,7 @@ public class AdaptadorTitulares extends RecyclerView.Adapter<AdaptadorTitulares.
 
     @Override
     public void onClick(View view) {
-        if(listener != null)
+        if (listener != null)
             listener.onClick(view);
     }
 

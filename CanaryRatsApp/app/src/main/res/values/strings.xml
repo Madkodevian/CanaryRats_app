@@ -13,6 +13,7 @@
     <string name="addressSignIn">Dirección</string>
     <string name="emailSignIn">Correo electrónico</string>
     <string name="passwordSignIn">Contraseña</string>
+    <string name="createPassword">Debe contener una minúscula, una mayúscula, un dígito y un caracter especial. De 8 a 20 caracteres.</string>
     <string name="passwordRepeatSignIn">Repita la contraseña</string>
     <string name="registrar">Registrarse</string>
     <string name="parrafoInicial">Consúltenos su idea de impresión por agua, rotulación, diseños 3D y otros</string>
@@ -29,6 +30,7 @@
     <string name="buttonMove">Mover</string>
     <string name="buttonUpdate">Añadir</string>
     <string name="buttonRemove">Eliminar</string>
+    <string name="buttonBack">Volver</string>
 
     <!-- Navigation drawer menu-->
     <string name="navigation_drawer_open">Abrir menú</string>

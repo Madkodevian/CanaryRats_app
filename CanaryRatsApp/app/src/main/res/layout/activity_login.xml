@@ -22,7 +22,6 @@
         android:layout_marginBottom="30dp"
         android:backgroundTint="@color/pastelBlueButtonBackground"
         android:minHeight="48dp"
-
         android:text="@string/registrar"
         android:textColor="@color/blueGrayButtonText"
         android:textSize="14sp"
@@ -141,6 +140,7 @@
         android:id="@+id/buttonWithoutLogin"
         android:layout_width="245dp"
         android:layout_height="51dp"
+        android:onClick="fade"
         android:backgroundTint="@color/pastelBlueButtonBackground"
         android:text="@string/acceder_sin_registrarse"
         android:textColor="@color/blueGrayButtonText"

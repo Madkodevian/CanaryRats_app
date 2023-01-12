@@ -1,13 +1,13 @@
 package com.testing.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.textfield.TextInputLayout;
 
 
@@ -46,9 +46,6 @@ public class LoginActivity extends AppCompatActivity {
         //Recuperamos la información de SignInNextActivity pasada en el intent
         Bundle bundle = this.getIntent().getExtras();
 
-        //Construimos el mensaje a mostrar
-        //txtComprobar.setText("usuario: " + bundle.getString("EMAIL"));
-
         //Implementamos el evento click del botón
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,8 +56,8 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent =
                         new Intent(LoginActivity.this, LoginInActivity.class);
 
-                //info en consola
-                Log.e("AAAAAAAAAAAAAAAAA", "estoy aqui");
+                //informacion en consola de prueba
+                //Log.e("prueba1", "estoy aqui");
 
                 //Bundle login
                 Bundle bundleLogin = new Bundle();
@@ -71,23 +68,16 @@ public class LoginActivity extends AppCompatActivity {
                 //password
                 String passwordLogin = userPassword.getText().toString().trim();
 
-                //Bundle sign in
-               // String emailUser = bundleLogin.getString("EMAIL");
-                //String passwordUser = bundleLogin.getString("PASSWORD");
-
-                //Sign in
-                //String name = bundle.getString("NAME");
-
                 //Sign in next
                 String emailSignIn = bundle.getString("EMAIL");
                 String passwordSignIn = bundle.getString("PASSWORD");
 
                 //Set error email and password
-                if(email.isEmpty() || !email.equals(emailSignIn)) {
+                if (email.isEmpty() || !email.equals(emailSignIn)) {
                     txtErrorEmail.setError("Error: el correo no es válido");
-                }else if(passwordLogin.isEmpty() || !passwordLogin.equals(passwordSignIn)) {
+                } else if (passwordLogin.isEmpty() || !passwordLogin.equals(passwordSignIn)) {
                     txtErrorPassword.setError("Error: La contraseña no es válida");
-                }else{
+                } else {
                     txtErrorEmail.setError(null);
                     txtErrorPassword.setError(null);
                     bundleLogin.putString("EMAIL", email);
@@ -126,5 +116,10 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void fade(View button){
+        startActivity(new Intent(this, ShopActivity.class));
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 }

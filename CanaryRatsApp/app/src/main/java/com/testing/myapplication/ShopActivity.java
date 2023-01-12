@@ -1,14 +1,6 @@
 package com.testing.myapplication;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import android.graphics.Rect;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -16,11 +8,22 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.navigation.NavigationView;
+
 import java.util.ArrayList;
 
 
-public class ShopActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, NavigationView.OnNavigationItemSelectedListener {
+public class ShopActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private RecyclerView recView;
     private ArrayList<Titular> datos;
@@ -36,7 +39,7 @@ public class ShopActivity extends AppCompatActivity implements AdapterView.OnIte
 
         //Buttons
         buttonUpdate = findViewById(R.id.buttonUpdate);
-        buttonRemove= findViewById(R.id.buttonRemove);
+        buttonRemove = findViewById(R.id.buttonRemove);
         buttonMove = findViewById(R.id.buttonMove);
 
         //Navigation menu
@@ -45,7 +48,11 @@ public class ShopActivity extends AppCompatActivity implements AdapterView.OnIte
 
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.navigation_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        //Otra forma
+        //navigationView = (NavigationView)findViewById(R.id.navigation_view);
+
+        //navigationView.setNavigationItemSelectedListener(this);
+
 
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
@@ -54,19 +61,9 @@ public class ShopActivity extends AppCompatActivity implements AdapterView.OnIte
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        if(savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new ProfileFragment()).commit();
-            navigationView.setCheckedItem(R.id.mnuOpc1Profile);
-
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new ShopFragment()).commit();
-            navigationView.setCheckedItem(R.id.mnuOpc2Shop);
-        }
-
         //inicialización de la lista de datos de ejemplo
         datos = new ArrayList<Titular>();
-        for(int i=0; i<11; i++)
+        for (int i = 0; i < 11; i++)
             datos.add(new Titular("Camiseta " + i, "Logo " + i));
 
         //Inicialización RecyclerView
@@ -86,7 +83,7 @@ public class ShopActivity extends AppCompatActivity implements AdapterView.OnIte
         recView.setAdapter(adaptador);
 
         recView.setLayoutManager(
-                new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+                new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
 
         //BOTONES CRUD
@@ -112,36 +109,70 @@ public class ShopActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(View v) {
                 Titular aux = datos.get(1);
-                datos.set(1,datos.get(2));
-                datos.set(2,aux);
+                datos.set(1, datos.get(2));
+                datos.set(2, aux);
 
                 adaptador.notifyItemMoved(1, 2);
             }
         });
+
+        //MENU NAV
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_launcher_foreground);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem item) {
+
+                        boolean fragmentTransaction = false;
+                        Fragment fragment = null;
+
+                        switch (item.getItemId()) {
+                            case R.id.mnuOpc1Profile:
+                                fragment = new ProfileFragment();
+                                fragmentTransaction = true;
+                                Log.e("OPCION 1. PERFIL", "Funciona aparentemente");
+                                break;
+                            case R.id.mnuOpc2Shop:
+                                fragment = new ShopFragment();
+                                fragmentTransaction = true;
+                                Log.e("OPCION 2. TIENDA", "Funciona aparentemente");
+                                break;
+                            case R.id.mnuOpc3GetInTouch:
+                                fragment = new GetInTouchFragment();
+                                fragmentTransaction = true;
+                                Log.e("OPCION 3. CONTACTO", "Funciona aparentemente");
+                                break;
+                        }
+                        if (fragmentTransaction) {
+                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                            item.setChecked(true);
+                            getSupportActionBar().setTitle(item.getTitle());
+                            Log.e("C3", "Funciona menu");
+                        }
+                        drawer.closeDrawers();
+                        return true;
+                    }
+                });
+
     }
 
-    @Override
-    public void onBackPressed() {
-        if(drawer.isDrawerOpen(GravityCompat.START)){
-            drawer.closeDrawer(GravityCompat.START);
-        }else{
-            super.onBackPressed();
-        }
-    }
-
-
-    //Establece una separación de cero entre los elementos.
-    RecyclerView.ItemDecoration decoration = new RecyclerView.ItemDecoration() {
-        @Override
-        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-            super.getItemOffsets(outRect, view, parent, state);
-            outRect.set(2, 2, 2, 2);
-            recView.addItemDecoration(decoration);
-
-            //agregar
-            //recView.setAdapter(adaptador);
-        }
-    };
+    /**
+     * //SEPARACION DE LA LISTA
+     * //Establece una separación de cero entre los elementos.
+     * RecyclerView.ItemDecoration decoration = new RecyclerView.ItemDecoration() {
+     *
+     * @Override public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+     * super.getItemOffsets(outRect, view, parent, state);
+     * outRect.set(2, 2, 2, 2);
+     * recView.addItemDecoration(decoration);
+     * <p>
+     * //agregar
+     * //recView.setAdapter(adaptador);
+     * }
+     * };
+     */
 
 
     @Override
@@ -150,23 +181,32 @@ public class ShopActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.mnuOpc1Profile:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ProfileFragment()).commit();
-                break;
-            case R.id.mnuOpc2Shop:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ShopFragment()).commit();
-                break;
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                drawer.openDrawer(GravityCompat.START);
+                return true;
+            //...
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
         super.onPointerCaptureChanged(hasCapture);
+    }
+
+    public void fade(View button) {
+        startActivity(new Intent(this, LoginActivity.class));
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 }

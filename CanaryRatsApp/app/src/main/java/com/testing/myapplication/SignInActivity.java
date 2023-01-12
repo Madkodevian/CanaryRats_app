@@ -1,12 +1,13 @@
 package com.testing.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.textfield.TextInputLayout;
 
 public class SignInActivity extends AppCompatActivity {
@@ -44,12 +45,6 @@ public class SignInActivity extends AppCompatActivity {
         //Error address
         TextInputLayout txtErrorAddress = findViewById(R.id.txtErrorAddress);
         txtErrorAddress.setErrorEnabled(true);
-
-        //Recuperamos la información pasada en el intent
-        //Bundle bundle = this.getIntent().getExtras();
-
-        //Construimos el mensaje a mostrar
-        //txtComprobar.setText("Ha iniciado sesión, usuario " + bundle.getString("EMAIL"));
 
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,11 +84,11 @@ public class SignInActivity extends AppCompatActivity {
                 String userAddress = address.getText().toString().trim();
 
                 //Set error email and password
-                if(userName.isEmpty() || userFirstSurname.isEmpty() || userAddress.isEmpty()) {
+                if (userName.isEmpty() || userFirstSurname.isEmpty() || userAddress.isEmpty()) {
                     txtErrorName.setError("Error: el nombre no es válido");
                     txtErrorFirstSurname.setError("Error: el primer apellido no es válido");
                     txtErrorAddress.setError("Error: la dirección no es válida");
-                }else{
+                } else {
                     txtErrorName.setError(null);
                     txtErrorFirstSurname.setError(null);
                     txtErrorAddress.setError(null);

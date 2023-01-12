@@ -1,13 +1,13 @@
 package com.testing.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -31,8 +31,6 @@ public class SignInNextActivity extends AppCompatActivity {
         addPassword = findViewById(R.id.addPassword);
         repeatPassword = findViewById(R.id.repeatPassword);
         buttonSignIn = findViewById(R.id.buttonSignIn);
-
-        //Errores String (quitando email y password) = String vacia
 
         //Error email
         TextInputLayout txtErrorEmail = findViewById(R.id.txtErrorEmail);
@@ -69,21 +67,20 @@ public class SignInNextActivity extends AppCompatActivity {
                 String passwordRepeatLogin = repeatPassword.getText().toString().trim();
 
                 //Set error email and password
-                if((!isValidEmail(email)) || email.isEmpty()) {
+                if ((!isValidEmail(email)) || email.isEmpty()) {
                     txtErrorEmail.setError("Error: el correo no es válido");
-                }else if((!isValidPassword(passwordLogin)) || passwordLogin.isEmpty()) {
+                } else if ((!isValidPassword(passwordLogin)) || passwordLogin.isEmpty()) {
                     txtErrorAddPassword.setError("Error: La contraseña no es válida");
-                    //txtErrorPassword.setError("Error: Intenta añadir una minúscula, una mayúscula, " +
-                    //"un dígito y un caracter especial. De 8 a 20 caracteres.");
-                    //Esto sería para hacer el registro
-                }else if((email.isEmpty()) && (passwordLogin.isEmpty())) {
+                    //Una minuscula, una mayuscula, un dígito y un caracter especial
+                    //De 8 a 20 caracteres
+                } else if ((email.isEmpty()) && (passwordLogin.isEmpty())) {
                     txtErrorAddPassword.setError("Error: la contraseña no es válida");
                     txtErrorEmail.setError("Error: el correo no es válido");
-                }else if(!(passwordLogin.equals(passwordRepeatLogin))){
+                } else if (!(passwordLogin.equals(passwordRepeatLogin))) {
                     txtErrorRepeatPassword.setError("Error: la contraseña no es válida");
-                }else if(passwordRepeatLogin.isEmpty()){
+                } else if (passwordRepeatLogin.isEmpty()) {
                     txtErrorRepeatPassword.setError("Error: la contraseña no es válida");
-                }else{
+                } else {
                     txtErrorEmail.setError(null);
                     txtErrorAddPassword.setError(null);
                     txtErrorRepeatPassword.setError(null);
@@ -115,6 +112,7 @@ public class SignInNextActivity extends AppCompatActivity {
 
                 return matcher.matches();
 
+                //Limitaciones para validar password
                 //^                 # start-of-string
                 //(?=.*[0-9])       # a digit must occur at least once
                 //(?=.*[a-z])       # a lower case letter must occur at least once
@@ -125,7 +123,6 @@ public class SignInNextActivity extends AppCompatActivity {
                 //.{de este minimo, a este maximo}
                 //$                 # end-of-string
             }
-            //The regex represents the need for user to enter at least 1 Uppercase, 1 Number and 1 Symbol
         });
     }
 }
